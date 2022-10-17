@@ -4,7 +4,6 @@ jobs:
   terraform-deployment:
     runs-on: ubuntu-latest
     steps:
-      # EXPORT THE CREDENTIALS - MARKETPLACE : "Configure AWS Credentials ACTION  GitHub Actions"
       - name: Configure AWS Credentials
         uses: aws-actions/configure-aws-credentials@v1
         with:
