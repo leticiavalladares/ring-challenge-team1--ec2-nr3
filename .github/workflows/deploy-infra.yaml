@@ -13,11 +13,9 @@ jobs:
 
       - name: Clone/Checkout your repository code infra
         uses: actions/checkout@v2
-        working-directory: ./infrastructure
 
       - name: Terraform setup
         uses: hashicorp/setup-terraform@v1
-        working-directory: ./infrastructure
 
       - name: Terraform init
         run: terraform init
