@@ -24,7 +24,7 @@ jobs:
         run: terraform init
         working-directory: ./infrastructure
 
-      - name: Terraform destroy
+      - name: Terraform destroy with lock false
         run: terraform destroy -auto-approve -lock=false
         working-directory: ./infrastructure
 
