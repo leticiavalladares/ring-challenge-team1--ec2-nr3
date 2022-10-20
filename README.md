@@ -1,3 +1,5 @@
+[![Server deploy](https://github.com/leticiavalladares/ring-challenge-team1-ec2-nr3/actions/workflows/deploy-infra.yaml/badge.svg?branch=main)](https://github.com/leticiavalladares/ring-challenge-team1-ec2-nr3/actions/workflows/deploy-infra.yaml)
+
 # Automate server deployment with GitHub Actions
 
 ## Requirements:
@@ -16,5 +18,3 @@
 ```
 6. Add your arn:aws:iam role from AWS for role/github-actions-oidc on your deploy-infra.yaml
 7. Push your code and that will trigger the GitHub Actions
-
-## Testing IP Address push
