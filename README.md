@@ -16,3 +16,5 @@
 ```
 6. Add your arn:aws:iam role from AWS for role/github-actions-oidc on your deploy-infra.yaml
 7. Push your code and that will trigger the GitHub Actions
+
+## Testing IP Address push
