@@ -2,8 +2,10 @@
 
 # Automate server deployment with GitHub Actions
 
-## Requirements:
+### Requirements:
 - OpenID/AWS setup completed.
+
+### Steps:
 
 1. Create your own repository
 2. Copy infrastructure files from your **own branch** from https://github.com/muhammetkoele/ring-number-challenge-team-1 in your new repository
