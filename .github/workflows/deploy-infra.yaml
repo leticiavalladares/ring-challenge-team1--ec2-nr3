@@ -1,9 +1,12 @@
-name: Server deploy
-on: [push]
+name: Server test
+on
+  push:
+    branches:
+      - '*'
+      - '!main'
 jobs:
   terraform-test:
     runs-on: ubuntu-latest
-    if: github.ref == 'refs/heads/dev'
     permissions:
       packages: write
       contents: read
@@ -32,10 +35,15 @@ jobs:
       - name: Terraform plan
         run: terraform plan -lock=false
         working-directory: ./infrastructure
-  
+
+name: Server deploy
+on:
+  push:
+    branches:
+      - main
+jobs:
   terraform-deployment:
     runs-on: ubuntu-latest
-    if: github.ref == 'refs/heads/main'
     permissions:
       packages: write
       contents: read
