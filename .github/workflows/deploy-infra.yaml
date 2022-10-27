@@ -1,5 +1,5 @@
 name: Server test
-on
+on:
   push:
     branches:
       - '*'
