@@ -1,14 +1,9 @@
 name: Server deploy
-on:
-  push:
-    branches:
-      - main
-  pull_request:
-    branches:
-      - main
+on: [push]
 jobs:
-  terraform-deployment:
+  terraform-test:
     runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/dev'
     permissions:
       packages: write
       contents: read
@@ -36,6 +31,30 @@ jobs:
 
       - name: Terraform plan
         run: terraform plan -lock=false
+        working-directory: ./infrastructure
+  
+  terraform-deployment:
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main'
+    permissions:
+      packages: write
+      contents: read
+      id-token: write
+    steps:
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@v1
+        with:
+          role-to-assume: arn:aws:iam::029687280754:role/github-actions-oidc
+          aws-region: "eu-central-1"
+
+      - name: Clone/Checkout your repository code infra
+        uses: actions/checkout@v2
+
+      - name: Terraform setup
+        uses: hashicorp/setup-terraform@v1
+
+      - name: Terraform init
+        run: terraform init
         working-directory: ./infrastructure
 
       - name: Terraform apply
