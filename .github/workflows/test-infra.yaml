@@ -1,10 +1,11 @@
-name: Server deploy
+name: Server test
 on:
   push:
     branches:
-      - main
+      - '*'
+      - '!main'
 jobs:
-  terraform-deployment:
+  terraform-test:
     runs-on: ubuntu-latest
     permissions:
       packages: write
@@ -27,6 +28,10 @@ jobs:
         run: terraform init
         working-directory: ./infrastructure
 
-      - name: Terraform apply
-        run: terraform apply -auto-approve -lock=false
+      - name: Terraform destroy with lock false
+        run: terraform destroy -auto-approve -lock=false
+        working-directory: ./infrastructure
+
+      - name: Terraform plan
+        run: terraform plan -lock=false
         working-directory: ./infrastructure
